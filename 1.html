@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحديث فيرموير ESP8266</title>
+    
+    <!-- استدعاء مكتبة ESP Web Tools -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --bg-color: #f4f7f6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 { color: #333; font-size: 24px; }
+        p { color: #666; line-height: 1.6; }
+        .status-box {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+            border-radius: 8px;
+            background: #fff9e6;
+        }
+        /* تنسيق زر التفليش ليظهر بشكل احترافي */
+        esp-web-install-button {
+            --esp-tools-button-border-radius: 8px;
+            --esp-tools-button-color: var(--primary-color);
+        }
+        .footer-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>تحديث نظام التشغيل</h1>
+        <p>قم بتوصيل قطعة الـ ESP8266 بالكمبيوتر عبر كابل الـ USB، ثم اضغط على الزر أدناه للبدء.</p>
+        
+        <div class="status-box">
+            <span>المعالج المدعوم: <b>ESP8266</b></span><br>
+            <span>الحالة: جاهز للتحميل</span>
+        </div>
+
+        <!-- هذا هو المكون المسؤول عن عملية الفلاش -->
+        <esp-web-install-button manifest="./manifest.json">
+            <button slot="activate" style="
+                padding: 12px 30px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+            ">
+                تحديث الآن (Flash)
+            </button>
+        </esp-web-install-button>
+
+        <div class="footer-note">
+            يجب استخدام متصفح Google Chrome أو Microsoft Edge.<br>
+            تأكد من إغلاق أي برنامج يستخدم الـ Serial مثل Arduino IDE.
+        </div>
+    </div>
+
+</body>
+</html>
